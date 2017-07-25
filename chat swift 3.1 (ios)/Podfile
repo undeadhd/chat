@@ -1,0 +1,12 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+target 'chat' do
+  use_frameworks!
+  pod 'Socket.IO-Client-Swift', '~> 10.0.1'
+  pod 'Alamofire', '~> 4.5'
+  pod 'SwiftyJSON', '~> 3.1'
+  pod 'RealmSwift', '~> 2.8.3'
+  pod 'NMessenger'
+  pod 'JSONWebToken'
+end
