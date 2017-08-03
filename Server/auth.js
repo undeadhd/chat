@@ -8,6 +8,7 @@ const urlMongo = 'mongodb://127.0.0.1:27017/chatDB';
 const logger = require('log4js').getLogger();
 const multer = require('multer')
 const upload = multer();
+const crypto = require('crypto');
 const tokenGenerator = require('uuid-token-generator');
 
 
