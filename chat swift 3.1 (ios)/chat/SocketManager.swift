@@ -37,6 +37,10 @@ class SocketManager: NSObject {
         socket.disconnect()
     }
 
+    func SocketFindFriend(id: Int) {
+        socket.emit("searchUser", userSearch(userID: id))
+    }
+    
     func socketAuth() {
         socket.emit("autentificate")
     }
@@ -63,6 +67,10 @@ class SocketManager: NSObject {
             self.socket.emit("authToken", AuthData(token: self.realm.objects(UserData.self)[0].token))
         }
         
+        socket.on("postUser") { data, ack in
+            print(data)
+        }
+        
         socket.on("newMessage") { data, ack in
             let json = JSON(data[0])
             self.nc.post(name: NSNotification.Name(rawValue: "newMessage"), object: nil, userInfo: ["text" : json["text"].stringValue, "senderID": json["senderID"].intValue])
@@ -81,6 +89,14 @@ class SocketManager: NSObject {
     
     
     //MARK: Struct message
+    
+    struct userSearch: SocketData {
+        let userID: Int
+        
+        func socketRepresentation() -> SocketData {
+            return ["user_id" : userID]
+        }
+    }
     
     struct AuthData : SocketData {
         let token : String

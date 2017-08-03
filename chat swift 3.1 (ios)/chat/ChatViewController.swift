@@ -16,6 +16,7 @@ class ChatViewController: NMessengerViewController {
     let nc = NotificationCenter.default
     private(set) var lastMessageGroup : MessageGroup? = nil
     
+    var idFriend: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

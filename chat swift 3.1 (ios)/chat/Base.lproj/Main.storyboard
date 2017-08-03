@@ -95,9 +95,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="xrj-CV-xWs" kind="show" id="ukk-5N-D9k"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -108,10 +105,14 @@
                     <navigationItem key="navigationItem" title="Chat" id="Em6-5S-Eiw">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="hvx-hI-Q9e">
                             <connections>
-                                <segue destination="xrj-CV-xWs" kind="show" id="B2R-Ue-bxC"/>
+                                <segue destination="RZw-Gh-9Ac" kind="show" id="MnS-Z1-P27"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="SearchBarFriends" destination="fjv-70-8Lh" id="d0g-3P-Oig"/>
+                        <segue destination="xrj-CV-xWs" kind="show" identifier="chatVC" id="wEh-cH-r9u"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="biP-sc-NIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,6 +136,45 @@
             </objects>
             <point key="canvasLocation" x="2963" y="148"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="Wz6-hw-PJZ">
+            <objects>
+                <tableViewController id="RZw-Gh-9Ac" customClass="SearchViewController" customModule="chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3nc-e6-4DS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Find new friend" id="bHk-JX-8Kl">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="3nc-e6-4DS" id="ETm-fn-VYl"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="b9L-6n-XxJ">
+                                <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b9L-6n-XxJ" id="L3M-8c-dYH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RZw-Gh-9Ac" id="Mdq-tE-TdR"/>
+                            <outlet property="delegate" destination="RZw-Gh-9Ac" id="b0k-iw-w6J"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="SearchBar" destination="bHk-JX-8Kl" id="ypc-t0-YL2"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1sS-Vn-HrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2970" y="857"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="VID-25-RqK">
             <objects>
@@ -152,7 +192,4 @@
             <point key="canvasLocation" x="1099" y="149"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="ukk-5N-D9k"/>
-    </inferredMetricsTieBreakers>
 </document>
